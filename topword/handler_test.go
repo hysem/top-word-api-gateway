@@ -92,13 +92,13 @@ func TestFindTopWords(t *testing.T) {
 			h.FindTopWords(rec, req)
 
 			require.Equal(t, tc.expectedStatus, rec.Result().StatusCode)
-			if tc.expectedBody != nil {
+			if tc.expectedBody == nil {
+				require.Empty(t, rec.Body.String())
+			} else {
 				var actualResponse []*st.WordInfo
 				err := json.NewDecoder(rec.Body).Decode(&actualResponse)
 				require.NoError(t, err)
-				require.Equal(t, actualResponse, testResponse)
-			} else {
-				require.Empty(t, rec.Body.String())
+				require.Equal(t, actualResponse, tc.expectedBody)
 			}
 		})
 	}
