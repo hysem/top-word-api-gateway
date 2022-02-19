@@ -6,7 +6,6 @@ tools:
 
 generate:
 	go generate ./...
-	mockery --all
 
 test:
 	go test -v --cover ./...

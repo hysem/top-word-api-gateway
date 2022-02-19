@@ -16,7 +16,7 @@ import (
 )
 
 type handlerMocks struct {
-	topWordServiceClient mocks.TopWordServiceClient
+	topWordServiceClient mocks.TopWordServiceClientMock
 }
 
 func (m *handlerMocks) assertExpectations(t *testing.T) {
